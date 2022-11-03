@@ -1,54 +1,30 @@
 package models;
 
-import org.springframework.messaging.Message;
+import lombok.Data;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+@Data
 public class Monitor {
-    public String camNumber;
-    public String ip;
-    public int port;
-    public List<Message> messages;
+    private static final Logger LOG = LogManager.getLogger(Monitor.class);
+    public int camNumber;
+    public List<Messages> messages;
+    private Host host = Settings.getHostMonitor(camNumber);
 
-    public String getCamNumber() {
-        return camNumber;
+    public void sendMessages() {
+        try {
+            var echoClient = new EchoClient(host);
+            //clear
+            echoClient.sendEchoWithOutReceive(new byte[]{0x03, 0x44, 0x47});
+            for (var item : messages) {
+                echoClient.sendEchoWithoutReceive(item.text, item.x, item.y, item.color);
+            }
+            echoClient.close();
+        } catch (Exception ex) {
+            LOG.error("Ошибка: " + ex.getMessage());
+        }
     }
 
-    public void setCamNumber(String camNumber) {
-        this.camNumber = camNumber;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public List<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
-    }
-
-    public Monitor() {
-    }
-
-    public Monitor(String camNumber, String ip, int port, List<Message> messages) {
-        this.camNumber = camNumber;
-        this.ip = ip;
-        this.port = port;
-        this.messages = messages;
-    }
 }
