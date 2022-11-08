@@ -2,26 +2,20 @@ package models;
 
 import lombok.Data;
 
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+
 @Data
 public class ConfigurationModelDoorAndMonitor {
-    String ipDoor;
-    int portDoor;
-    String ipMonitor;
-    int portMonitor;
-    String idClient;
-    String ipClient;
-    int portClient;
 
-    @Override
-    public String toString() {
-        return "{" + "\n" +
-                "\"ipDoor\" : " + ipDoor + ",\n" +
-                "\"portDoor\" : " + portDoor + ",\n" +
-                "\"ipMonitor\" : " + ipMonitor + ",\n" +
-                "\"portMonitor\" : " + portMonitor + ",\n" +
-                "\"clientId\" : " + idClient + ",\n" +
-                "\"ipClient\" : " + ipClient + ",\n" +
-                "\"portClient\" : " + portClient + "\n" +
-                '}';
-    }
+    String idClient = "MonitorDoor";
+    String ipClient = "194.87.237.67";
+    int portClient = 1883;
+
+    Map<Integer, MonitorDoor> monitorDoorDictionary = new HashMap<>() {{
+        put(1, new MonitorDoor("1244", 1234, "192.168.8.110", 1985));
+        put(2, new MonitorDoor("1244", 1234, "192.168.8.111", 1245));
+    }};
 }

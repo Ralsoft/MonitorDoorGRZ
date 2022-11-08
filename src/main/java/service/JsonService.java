@@ -1,6 +1,7 @@
 package service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import models.ConfigurationModelDoorAndMonitor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,11 +16,16 @@ public class JsonService {
     public void isNewFile(File file) {
         try {
             if (file.createNewFile()) {
-                LOG.info("Файл " + file.getName() + " успешно создан по пути: " + file.getAbsolutePath());
 
                 FileOutputStream out = new FileOutputStream(file);
-                out.write(new ConfigurationModelDoorAndMonitor().toString().getBytes());
+                ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+                String json = ow.writeValueAsString(new ConfigurationModelDoorAndMonitor());
+
+                out.write(json.getBytes());
                 out.close();
+
+                LOG.info("Файл конфигурации успешно создан. Запустите программу заново.  ПУТЬ: " + file.getAbsolutePath());
+                System.exit(0);
             }
         } catch (IOException e) {
             LOG.error("Ошибка: " + e.getMessage());

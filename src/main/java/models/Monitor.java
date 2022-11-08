@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,11 +12,18 @@ public class Monitor {
     private static final Logger LOG = LogManager.getLogger(Monitor.class);
     public int camNumber;
     public List<Messages> messages;
-    private Host host = Settings.getHostMonitor(camNumber);
+
+    public Monitor() {
+    }
+
+    public Monitor(int camNumber, List<Messages> messages) {
+        this.camNumber = camNumber;
+        this.messages = messages;
+    }
 
     public void sendMessages() {
         try {
-            var echoClient = new EchoClient(host);
+            var echoClient = new EchoClient(Settings.getHostMonitor(camNumber));
             //clear
             echoClient.sendEchoWithOutReceive(new byte[]{0x03, 0x44, 0x47});
             for (var item : messages) {
@@ -23,7 +31,7 @@ public class Monitor {
             }
             echoClient.close();
         } catch (Exception ex) {
-            LOG.error("Œ¯Ë·Í‡: " + ex.getMessage());
+            LOG.error("–û—à–∏–±–∫–∞: " + ex.getMessage());
         }
     }
 

@@ -7,7 +7,6 @@ public class Door {
     private static final Logger LOG = LogManager.getLogger(Door.class);
 
     public int cameraNumber;
-    private final Host _host = Settings.getHostDoor(cameraNumber);
     byte[] dataOpenDoor0 = {0x02, 0x1F, 0x00, 0x03, 0x61, 0x38};
     byte[] dataOpenDoor1 = {0x02, 0x1F, 0x01, 0x03, (byte) 0xb9, 0x21};
 
@@ -21,11 +20,11 @@ public class Door {
 
     public void openDoor(byte[] data) {
         try {
-            var echoClient = new EchoClient(_host);
+            var echoClient = new EchoClient(Settings.getHostDoor(cameraNumber));
             echoClient.sendEchoWithOutReceive(data);
             echoClient.close();
         } catch (Exception ex) {
-            LOG.error("Œ¯Ë·Í‡: " + ex.getMessage());
+            LOG.error("–û—à–∏–±–∫–∞: " + ex.getMessage());
         }
     }
 }

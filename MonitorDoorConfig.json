@@ -1,9 +1,19 @@
 {
-  "ipDoor" : "192.168.8.50",
-  "portDoor" : 8192,
-  "ipMonitor" : "192.168.8.110",
-  "portMonitor" : 1985,
-  "idClient" : "DoorMonitorGRZ",
+  "idClient" : "MonitorDoor",
   "ipClient" : "194.87.237.67",
-  "portClient" : 1883
+  "portClient" : 1883,
+  "monitorDoorDictionary" : {
+    "1" : {
+      "ipDoor" : "1244",
+      "portDoor" : 1234,
+      "ipMonitor" : "192.168.8.110",
+      "portMonitor" : 1985
+    },
+    "2" : {
+      "ipDoor" : "1244",
+      "portDoor" : 1234,
+      "ipMonitor" : "192.168.8.111",
+      "portMonitor" : 1245
+    }
+  }
 }

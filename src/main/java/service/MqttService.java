@@ -13,31 +13,19 @@ public class MqttService {
 
     public MqttService(String host, int port, String clientName){
         try {
-            LOG.info("Попытка подключения. HOST: " + host + " PORT: " + port + " CLIENT_NAME: " + clientName);
+            LOG.info("РџРѕРїС‹С‚РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ. HOST: " + host + " PORT: " + port + " CLIENT_NAME: " + clientName);
             mqttClient = new MqttClient(
                     "tcp://" + host
-                            + ":" + port, clientName);
+                            + ":" + port, MqttClient.generateClientId());
             mqttClient.connect();
-            LOG.info("Успешное подключение.");
+            LOG.info("РЈСЃРїРµС€РЅРѕРµ РїРѕРґРєР»СЋС‡РµРЅРёРµ.");
         } catch (MqttException e) {
-            LOG.error("Ошибка: " + e.getMessage());
+            LOG.error("РћС€РёР±РєР°: " + e.getMessage());
         }
     }
 
 
     public MqttClient getMqttClient() {
         return mqttClient;
-    }
-
-    public void publish(final String topic, final String payload) {
-        try {
-            LOG.info("Попытка публикации. TOPIC: " + topic + " PAYLOAD: " + payload);
-            MqttMessage mqttMessage = new MqttMessage();
-            mqttMessage.setPayload(payload.getBytes());
-            mqttClient.publish(topic, mqttMessage);
-            LOG.info("Сообщение успешно опубликовано.");
-        } catch (Exception e) {
-            LOG.error("Ошибка: " + e.getMessage());
-        }
     }
 }

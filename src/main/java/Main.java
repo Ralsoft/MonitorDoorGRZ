@@ -15,59 +15,59 @@ public class Main {
     static JsonService service = new JsonService();
     static ObjectMapper mapper = new ObjectMapper();
     public static void main(String[] args) {
-        LOG.info("Запуск программы.");
+        LOG.info("Р—Р°РїСѓСЃРє РїСЂРѕРіСЂР°РјРјС‹.");
         try {
             var mqttService = new MqttService(service.getConfigParam().getIpClient(), service.getConfigParam().getPortClient(), service.getConfigParam().getIdClient());
 
-            LOG.info("Попытка подписки на топик Parking/MonitorDoor/#");
+            LOG.info("РџРѕРїС‹С‚РєР° РїРѕРґРїРёСЃРєРё РЅР° С‚РѕРїРёРє Parking/MonitorDoor/#");
             mqttService.getMqttClient().subscribeWithResponse("Parking/MonitorDoor/#", (topic, message) -> {
                 try {
-                    LOG.info("Получено сообщение. TOPIC: " + topic + " MESSAGE: " + message);
+                    LOG.info("РџРѕР»СѓС‡РµРЅРѕ СЃРѕРѕР±С‰РµРЅРёРµ. TOPIC: " + topic + " MESSAGE: " + message);
                     String json = new String(message.getPayload());
                     switch (topic) {
-                        case "Parking/MonitorDoor/Monitor/View/" -> {
+                        case "Parking/MonitorDoor/Monitor/View" -> {
                             try {
-                                LOG.info("Принят топик - Parking/MonitorDoor/Monitor/View/");
+                                LOG.info("РџСЂРёРЅСЏС‚ С‚РѕРїРёРє - Parking/MonitorDoor/Monitor/View");
                                 var monitor = mapper.readValue(json, Monitor.class);
                                 monitor.sendMessages();
                             } catch (Exception ex) {
-                                LOG.error("Ошибка: " + ex.getMessage());
+                                LOG.error("РћС€РёР±РєР°: " + ex.getMessage());
                             }
                         }
 //                        case "Parking/MonitorDoor/Door/Open/1/" -> {
 //                            try {
-//                                LOG.info("Принят топик - Parking/MonitorDoor/Door/Open/1/");
+//                                LOG.info("РџСЂРёРЅСЏС‚ С‚РѕРїРёРє - Parking/MonitorDoor/Door/Open/1/");
 //                                var door = mapper.readValue(json, Door.class);
 //                                door.openDoor1();
 //                            } catch (Exception ex) {
-//                                LOG.error("Ошибка: " + ex.getMessage());
+//                                LOG.error("РћС€РёР±РєР°: " + ex.getMessage());
 //                            }
 //                        }
-                        case "Parking/MonitorDoor/Door/Open/0/" -> {
+                        case "Parking/MonitorDoor/Door/Open" -> {
                             try {
-                                LOG.info("Принят топик - Parking/MonitorDoor/Door/Open/0/");
+                                LOG.info("РџСЂРёРЅСЏС‚ С‚РѕРїРёРє - Parking/MonitorDoor/Door/Open");
                                 var door = mapper.readValue(json, Door.class);
                                 door.openDoor0();
                             } catch (Exception ex) {
-                                LOG.error("Ошибка: " + ex.getMessage());
+                                LOG.error("РћС€РёР±РєР°: " + ex.getMessage());
                             }
                         }
                         case "Parking/MonitorDoor/Door/Warning/" -> {
                             try {
-                                LOG.info("Принят топик - Parking/MonitorDoor/Door/Warning/");
+                                LOG.info("РџСЂРёРЅСЏС‚ С‚РѕРїРёРє - Parking/MonitorDoor/Door/Warning/");
                                 //
                             } catch (Exception ex) {
-                                LOG.error("Ошибка: " + ex.getMessage());
+                                LOG.error("РћС€РёР±РєР°: " + ex.getMessage());
                             }
                         }
                     }
                 } catch (Exception ex) {
-                    LOG.error("Ошибка: " + ex.getMessage());
+                    LOG.error("РћС€РёР±РєР°: " + ex.getMessage());
                 }
             });
-            LOG.info("Подписка произошла успешно.");
+            LOG.info("РџРѕРґРїРёСЃРєР° РїСЂРѕРёР·РѕС€Р»Р° СѓСЃРїРµС€РЅРѕ.");
         } catch (Exception ex) {
-            LOG.error("Ошибка: " + ex.getMessage());
+            LOG.error("РћС€РёР±РєР°: " + ex.getMessage());
         }
     }
 }

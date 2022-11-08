@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/main/java/Main.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/models/Door.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/models/EchoClient.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/models/Host.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/models/Messages.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/models/Monitor.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/models/Settings.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/service/MqttService.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/service/MqttService.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/models/ConfigurationModelDoorAndMonitor.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/models/Door.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/models/EchoClient.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/models/Host.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/models/Messages.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/models/Monitor.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/models/MonitorDoor.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/models/Settings.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/service/JsonService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/service/MqttService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
 </project>

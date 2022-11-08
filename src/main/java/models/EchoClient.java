@@ -21,27 +21,27 @@ public class EchoClient {
         try {
             _ip = host.ip;
             _port = host.port;
-            LOG.info("Подключение к клиенту. HOST: " + _ip + ":" + _port);
+            LOG.info("РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє РєР»РёРµРЅС‚Сѓ. HOST: " + _ip + ":" + _port);
             socket = new DatagramSocket();
             address = InetAddress.getByName(_ip);
         } catch (Exception ex) {
-            LOG.error("Ошибка: " + ex.getMessage());
+            LOG.error("РћС€РёР±РєР°: " + ex.getMessage());
         }
     }
 
     public void sendEchoWithOutReceive(byte[] msg) {
         try {
-            LOG.info("Попытка отправки сообщения. MESSAGE: " + Arrays.toString(msg) + " ADDRESS: " + address + " PORT: " + _port);
+            LOG.info("РџРѕРїС‹С‚РєР° РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ. MESSAGE: " + Arrays.toString(msg) + " ADDRESS: " + address + " PORT: " + _port);
             DatagramPacket packet = new DatagramPacket(msg, msg.length, address, _port);
             socket.send(packet);
-            LOG.info("Сообщение успешно отправлено.");
+            LOG.info("РЎРѕРѕР±С‰РµРЅРёРµ СѓСЃРїРµС€РЅРѕ РѕС‚РїСЂР°РІР»РµРЅРѕ.");
         } catch (Exception e) {
-            LOG.error("Ошибка: " + e);
+            LOG.error("РћС€РёР±РєР°: " + e);
         }
     }
 
-    //Функция рассчета контрольной суммы BCC
-    byte BCCCalc(byte dataBCC[], int BCCSize) {  // Передаем в функцию  массив с данными и размер
+    //Р¤СѓРЅРєС†РёСЏ СЂР°СЃСЃС‡РµС‚Р° РєРѕРЅС‚СЂРѕР»СЊРЅРѕР№ СЃСѓРјРјС‹ BCC
+    byte BCCCalc(byte dataBCC[], int BCCSize) {  // РџРµСЂРµРґР°РµРј РІ С„СѓРЅРєС†РёСЋ  РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё Рё СЂР°Р·РјРµСЂ
         byte result = 0;
         for (int i = 0; i < BCCSize; i++) {
             result ^= dataBCC[i];
@@ -51,7 +51,7 @@ public class EchoClient {
 
     public void sendEchoWithoutReceive(String message, byte x, byte y, byte color) {
         try {
-            LOG.info("Отправка сообщения на табло. MESSAGE: " + message + " X: " + x + " Y: " + y + " COLOR: " + color);
+            LOG.info("РћС‚РїСЂР°РІРєР° СЃРѕРѕР±С‰РµРЅРёСЏ РЅР° С‚Р°Р±Р»Рѕ. MESSAGE: " + message + " X: " + x + " Y: " + y + " COLOR: " + color);
 
             byte[] textByte = message.getBytes(Charset.forName("windows-1251"));
             byte[] msg = new byte[6 + textByte.length];
@@ -71,67 +71,14 @@ public class EchoClient {
 
             socket.send(packet);
 
-            LOG.info("Сообщение успешно отправлено.");
+            LOG.info("РЎРѕРѕР±С‰РµРЅРёРµ СѓСЃРїРµС€РЅРѕ РѕС‚РїСЂР°РІР»РµРЅРѕ.");
         } catch (Exception e) {
-            LOG.error("Ошибка: " + e.getMessage());
+            LOG.error("РћС€РёР±РєР°: " + e.getMessage());
         }
     }
 
     public void close() {
         socket.close();
-        LOG.info("Сокет закрыт. IP: " + _ip + " PORT: " + _port);
+        LOG.info("РЎРѕРєРµС‚ Р·Р°РєСЂС‹С‚. IP: " + _ip + " PORT: " + _port);
     }
-
-
-//    public String sendEcho(String message, byte X, byte Y, byte Color) {
-//        byte[] textByte = message.getBytes(Charset.forName("windows-1251"));
-//        byte[] msg = new byte[6 + textByte.length];
-//        msg[0] = (byte) msg.length;
-//        msg[1] = 0x46;
-//        msg[2] = X;
-//        msg[3] = Y;
-//        msg[4] = Color;
-//
-//        for (int i = 0; i < textByte.length; i++) {
-//            msg[i + 5] = textByte[i];
-//        }
-//
-//        byte bcc = BCCCalc(msg, msg.length);
-//        msg[5 + textByte.length] = bcc;
-//
-//        var packet = new DatagramPacket(msg, msg.length, address, _port);
-//        try {
-//            socket.send(packet);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        packet = new DatagramPacket(msg, msg.length);
-//        try {
-//            socket.receive(packet);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        String received = new String(
-//                packet.getData(), 0, packet.getLength());
-//        return received;
-//    }
-
-//    public String sendEcho(byte[] msg) {
-//        DatagramPacket packet
-//                = new DatagramPacket(msg, msg.length, address, _port);
-//        try {
-//            socket.send(packet);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        packet = new DatagramPacket(msg, msg.length);
-//        try {
-//            socket.receive(packet);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        String received = new String(
-//                packet.getData(), 0, packet.getLength());
-//        return received;
-//    }
 }

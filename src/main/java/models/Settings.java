@@ -10,12 +10,26 @@ public class Settings {
     static JsonService jsonService = new JsonService();
 
     public static Host getHostDoor(int cameraNumber) {
-        LOG.info("Получение информации о хосте двери. IP: " + jsonService.getConfigParam().ipDoor + " PORT: " + jsonService.getConfigParam().portDoor);
-        return new Host(jsonService.getConfigParam().ipDoor, jsonService.getConfigParam().portDoor);
+        try{
+            var ipDoor = jsonService.getConfigParam().monitorDoorDictionary.get(cameraNumber).ipDoor;
+            var portDoor = jsonService.getConfigParam().monitorDoorDictionary.get(cameraNumber).portDoor;
+            LOG.info("РџРѕР»СѓС‡РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С…РѕСЃС‚Рµ РґРІРµСЂРё. IP: " + ipDoor + " PORT: " + portDoor);
+            return new Host(ipDoor, portDoor);
+        }catch (Exception e){
+
+        }
+        return null;
     }
 
     public static Host getHostMonitor(int cameraNumber) {
-        LOG.info("Получение информации о хосте монитора. IP: " + jsonService.getConfigParam().ipMonitor + " PORT: " + jsonService.getConfigParam().portMonitor);
-        return new Host(jsonService.getConfigParam().ipMonitor, jsonService.getConfigParam().portMonitor);
+        try{
+            var ipMonitor = jsonService.getConfigParam().monitorDoorDictionary.get(cameraNumber).ipMonitor;
+            var portMonitor = jsonService.getConfigParam().monitorDoorDictionary.get(cameraNumber).portMonitor;
+            LOG.info("РџРѕР»СѓС‡РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С…РѕСЃС‚Рµ РјРѕРЅРёС‚РѕСЂР°. IP: " + ipMonitor + " PORT: " + portMonitor);
+            return new Host(ipMonitor, portMonitor);
+        }catch (Exception e){
+
+        }
+        return null;
     }
 }

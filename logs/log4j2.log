@@ -1,178 +1,19 @@
-2022-11-03 10:27:38,450 ERROR c.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class configuration.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: configuration.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:27:38,474 ERROR Main [main] Ошибка: Cannot invoke "configuration.ConfigurationModelDoorAndMonitor.getIpClient()" because the return value of "configuration.JsonService.getConfigParam()" is null
-2022-11-03 10:27:41,881 INFO Main [main] Запуск программы.
-2022-11-03 10:27:42,011 ERROR c.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class configuration.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: configuration.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:27:42,017 ERROR c.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class configuration.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: configuration.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:27:42,018 ERROR c.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class configuration.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: configuration.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:27:42,019 INFO MqttService [main] Попытка подключения. HOST: 0.0.0.0 PORT: 0.0.0.0 CLIENT_NAME: Undefined
-2022-11-03 10:27:42,055 ERROR Main [main] Ошибка: Unable to make field private transient java.lang.String java.net.URI.userInfo accessible: module java.base does not "opens java.net" to unnamed module @2bea5ab4
-2022-11-03 10:34:08,843 INFO Main [main] Запуск программы.
-2022-11-03 10:34:08,959 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:34:08,962 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:34:08,963 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:34:08,966 INFO s.MqttService [main] Попытка подключения. HOST: null PORT: 0 CLIENT_NAME: null
-2022-11-03 10:34:08,983 ERROR Main [main] Ошибка: Null clientId
-2022-11-03 10:34:49,875 INFO Main [main] Запуск программы.
-2022-11-03 10:34:52,915 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:34:52,918 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:34:52,921 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:34:52,935 INFO s.MqttService [main] Попытка подключения. HOST: null PORT: 0 CLIENT_NAME: null
-2022-11-03 10:34:59,931 ERROR Main [main] Ошибка: Null clientId
-2022-11-03 10:35:10,364 INFO Main [main] Запуск программы.
-2022-11-03 10:35:12,079 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:35:12,083 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:35:12,085 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:35:13,509 INFO s.MqttService [main] Попытка подключения. HOST: null PORT: 0 CLIENT_NAME: null
-2022-11-03 10:36:18,293 ERROR Main [main] Ошибка: Null clientId
-2022-11-03 10:36:19,796 INFO Main [main] Запуск программы.
-2022-11-03 10:36:19,917 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:36:19,919 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:36:19,920 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:36:19,923 INFO s.MqttService [main] Попытка подключения. HOST: null PORT: 0 CLIENT_NAME: null
-2022-11-03 10:36:41,302 ERROR Main [main] Ошибка: Null clientId
-2022-11-03 10:39:52,767 INFO Main [main] Запуск программы.
-2022-11-03 10:42:52,123 INFO Main [main] Запуск программы.
-2022-11-03 10:44:18,904 INFO Main [main] Запуск программы.
-2022-11-03 10:44:25,325 INFO Main [main] Запуск программы.
-2022-11-03 10:44:25,442 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:44:25,443 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:44:25,445 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:44:25,447 INFO s.MqttService [main] Попытка подключения. HOST: null PORT: 0 CLIENT_NAME: null
-2022-11-03 10:44:25,465 ERROR Main [main] Ошибка: Null clientId
-2022-11-03 10:48:17,986 INFO Main [main] Запуск программы.
-2022-11-03 10:48:30,797 ERROR Main [main] Ошибка: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 10:49:42,478 INFO Main [main] Запуск программы.
-2022-11-03 10:49:54,737 INFO s.MqttService [main] Попытка подключения. HOST: 194.87.237.67 PORT: 1883 CLIENT_NAME: DoorMonitorGRZ
-2022-11-03 10:49:56,015 INFO s.MqttService [main] Успешное подключение.
-2022-11-03 10:50:24,585 INFO Main [main] Попытка подписки на топик Parking/MonitorDoor/#
-2022-11-03 10:50:32,492 INFO Main [main] Запуск программы.
-2022-11-03 10:50:36,877 INFO s.MqttService [main] Попытка подключения. HOST: 194.87.237.67 PORT: 1883 CLIENT_NAME: DoorMonitorGRZ
-2022-11-03 10:50:37,561 INFO s.MqttService [main] Успешное подключение.
-2022-11-03 10:51:01,023 INFO Main [main] Попытка подписки на топик Parking/MonitorDoor/#
-2022-11-03 10:51:04,336 INFO Main [main] Подписка произошла успешно.
-2022-11-03 10:51:06,274 INFO Main [main] Запуск программы.
-2022-11-03 10:51:06,393 INFO s.MqttService [main] Попытка подключения. HOST: 194.87.237.67 PORT: 1883 CLIENT_NAME: DoorMonitorGRZ
-2022-11-03 10:51:07,209 INFO s.MqttService [main] Успешное подключение.
-2022-11-03 10:51:07,209 INFO Main [main] Попытка подписки на топик Parking/MonitorDoor/#
-2022-11-03 10:51:07,327 INFO Main [main] Подписка произошла успешно.
-2022-11-03 10:51:45,611 INFO Main [MQTT Call: DoorMonitorGRZ] Получено сообщение. TOPIC: Parking/MonitorDoor/Monitor/View/ MESSAGE: {"camNumber":2,"messages":[{"x":0,"y":0,"color":1,"text":"132"}]}
-2022-11-03 10:51:45,611 INFO Main [MQTT Call: DoorMonitorGRZ] Принят топик - Parking/MonitorDoor/Monitor/View/
-2022-11-03 10:51:45,611 INFO m.Settings [MQTT Call: DoorMonitorGRZ] Получение информации о хосте монитора. IP: 192.168.8.110 PORT: 1985
-2022-11-03 10:51:45,626 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Подключение к клиенту. HOST: 192.168.8.110:1985
-2022-11-03 10:51:45,626 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Попытка отправки сообщения. MESSAGE: [3, 68, 71] ADDRESS: /192.168.8.110 PORT: 1985
-2022-11-03 10:51:45,626 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Сообщение успешно отправлено.
-2022-11-03 10:51:45,642 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Отправка сообщения на табло. MESSAGE: 132 X: 0 Y: 0 COLOR: 1
-2022-11-03 10:51:45,642 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Сообщение успешно отправлено.
-2022-11-03 10:51:45,642 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Сокет закрыт. IP: 192.168.8.110 PORT: 1985
-2022-11-03 10:57:34,936 INFO Main [main] Запуск программы.
-2022-11-03 10:57:35,057 INFO s.MqttService [main] Попытка подключения. HOST: 194.87.237.67 PORT: 1883 CLIENT_NAME: DoorMonitorGRZ
-2022-11-03 10:57:35,936 INFO s.MqttService [main] Успешное подключение.
-2022-11-03 10:57:35,936 INFO Main [main] Попытка подписки на топик Parking/MonitorDoor/#
-2022-11-03 10:57:36,038 INFO Main [main] Подписка произошла успешно.
-2022-11-03 11:00:56,500 INFO Main [main] Запуск программы.
-2022-11-03 11:00:56,572 INFO s.JsonService [main] Р¤Р°Р№Р» MqttConfiguration.json СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ РїРѕ РїСѓС‚Рё: C:\Users\Sergey\Desktop\JAVA\MonitorDoorGRZ\MqttConfiguration.json
-2022-11-03 11:00:56,625 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 18] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 11:00:56,627 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 18] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 11:00:56,628 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 18] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 11:00:56,630 INFO s.MqttService [main] Попытка подключения. HOST: null PORT: 0 CLIENT_NAME: null
-2022-11-03 11:00:56,646 ERROR Main [main] Ошибка: Null clientId
-2022-11-03 11:03:05,287 INFO Main [main] Запуск программы.
-2022-11-03 11:03:05,363 INFO s.JsonService [main] Р¤Р°Р№Р» MqttConfiguration.json СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ РїРѕ РїСѓС‚Рё: C:\Users\Sergey\Desktop\JAVA\MonitorDoorGRZ\MqttConfiguration.json
-2022-11-03 11:03:05,412 ERROR s.JsonService [main] РћС€РёР±РєР°: Unexpected character (',' (code 44)): expected a value
- at [Source: (File); line: 2, column: 13]
-2022-11-03 11:03:05,414 ERROR s.JsonService [main] РћС€РёР±РєР°: Unexpected character (',' (code 44)): expected a value
- at [Source: (File); line: 2, column: 13]
-2022-11-03 11:03:05,415 ERROR s.JsonService [main] РћС€РёР±РєР°: Unexpected character (',' (code 44)): expected a value
- at [Source: (File); line: 2, column: 13]
-2022-11-03 11:03:05,417 INFO s.MqttService [main] Попытка подключения. HOST:  PORT: 0 CLIENT_NAME: 
-2022-11-03 11:03:05,450 ERROR Main [main] Ошибка: Unable to make field private transient java.lang.String java.net.URI.userInfo accessible: module java.base does not "opens java.net" to unnamed module @57f23557
-2022-11-03 11:03:42,393 INFO Main [main] Запуск программы.
-2022-11-03 11:03:42,511 INFO s.MqttService [main] Попытка подключения. HOST: 194.87.237.67 PORT: 1883 CLIENT_NAME: DoorMonitorGRZ
-2022-11-03 11:03:42,993 INFO s.MqttService [main] Успешное подключение.
-2022-11-03 11:03:42,994 INFO Main [main] Попытка подписки на топик Parking/MonitorDoor/#
-2022-11-03 11:03:43,139 INFO Main [main] Подписка произошла успешно.
-2022-11-03 11:04:14,753 INFO Main [main] Запуск программы.
-2022-11-03 11:04:14,872 INFO s.MqttService [main] Попытка подключения. HOST: 194.87.237.67 PORT: 1883 CLIENT_NAME: DoorMonitorGRZ
-2022-11-03 11:04:15,345 INFO s.MqttService [main] Успешное подключение.
-2022-11-03 11:04:15,345 INFO Main [main] Попытка подписки на топик Parking/MonitorDoor/#
-2022-11-03 11:04:15,365 INFO Main [main] Подписка произошла успешно.
-2022-11-03 11:04:58,338 INFO Main [main] Запуск программы.
-2022-11-03 11:04:58,414 INFO s.JsonService [main] Р¤Р°Р№Р» MqttConfiguration.json СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ РїРѕ РїСѓС‚Рё: C:\Users\Sergey\Desktop\JAVA\MonitorDoorGRZ\MqttConfiguration.json
-2022-11-03 11:04:58,460 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 11:04:58,462 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 11:04:58,463 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 15] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 11:04:58,465 INFO s.MqttService [main] Попытка подключения. HOST: "0.0.0.0" PORT: 0 CLIENT_NAME: "0.0.0.0"
-2022-11-03 11:04:58,482 ERROR Main [main] Ошибка: Can't parse string to URI "tcp://"0.0.0.0":0"
-2022-11-03 11:05:24,235 INFO Main [main] Запуск программы.
-2022-11-03 11:05:24,357 INFO s.MqttService [main] Попытка подключения. HOST: 194.87.237.67 PORT: 1883 CLIENT_NAME: DoorMonitorGRZ
-2022-11-03 11:05:25,473 INFO s.MqttService [main] Успешное подключение.
-2022-11-03 11:05:25,473 INFO Main [main] Попытка подписки на топик Parking/MonitorDoor/#
-2022-11-03 11:05:25,786 INFO Main [main] Подписка произошла успешно.
-2022-11-03 11:06:10,288 INFO Main [main] Запуск программы.
-2022-11-03 11:06:10,402 INFO s.MqttService [main] Попытка подключения. HOST: 194.87.237.67 PORT: 1883 CLIENT_NAME: DoorMonitorGRZ
-2022-11-03 11:06:10,904 INFO s.MqttService [main] Успешное подключение.
-2022-11-03 11:06:10,905 INFO Main [main] Попытка подписки на топик Parking/MonitorDoor/#
-2022-11-03 11:06:10,927 INFO Main [main] Подписка произошла успешно.
-2022-11-03 11:07:55,383 INFO Main [MQTT Call: DoorMonitorGRZ] Получено сообщение. TOPIC: Parking/MonitorDoor/Monitor/View/ MESSAGE: 
-2022-11-03 11:07:55,384 INFO Main [MQTT Call: DoorMonitorGRZ] Принят топик - Parking/MonitorDoor/Monitor/View/
-2022-11-03 11:07:55,385 ERROR Main [MQTT Call: DoorMonitorGRZ] Ошибка: No content to map due to end-of-input
- at [Source: (String)""; line: 1, column: 0]
-2022-11-03 11:08:22,805 INFO Main [MQTT Call: DoorMonitorGRZ] Получено сообщение. TOPIC: Parking/MonitorDoor/Monitor/View/ MESSAGE: {"camNumber":23,"messages":[{"x":0,"y":0,"color":1,"text":"12345678"},{"x":9,"y":0,"color":2,"text":"46"}]}
-2022-11-03 11:08:22,805 INFO Main [MQTT Call: DoorMonitorGRZ] Принят топик - Parking/MonitorDoor/Monitor/View/
-2022-11-03 11:08:22,814 INFO m.Settings [MQTT Call: DoorMonitorGRZ] Получение информации о хосте монитора. IP: 192.168.8.110 PORT: 1985
-2022-11-03 11:08:22,817 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Подключение к клиенту. HOST: 192.168.8.110:1985
-2022-11-03 11:08:22,823 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Попытка отправки сообщения. MESSAGE: [3, 68, 71] ADDRESS: /192.168.8.110 PORT: 1985
-2022-11-03 11:08:22,825 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Сообщение успешно отправлено.
-2022-11-03 11:08:22,828 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Отправка сообщения на табло. MESSAGE: 12345678 X: 0 Y: 0 COLOR: 1
-2022-11-03 11:08:22,828 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Сообщение успешно отправлено.
-2022-11-03 11:08:22,828 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Отправка сообщения на табло. MESSAGE: 46 X: 9 Y: 0 COLOR: 2
-2022-11-03 11:08:22,828 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Сообщение успешно отправлено.
-2022-11-03 11:08:22,829 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Сокет закрыт. IP: 192.168.8.110 PORT: 1985
-2022-11-03 11:09:09,866 INFO Main [MQTT Call: DoorMonitorGRZ] Получено сообщение. TOPIC: Parking/MonitorDoor/Monitor/View/ MESSAGE: {"camNumber":2,"messages":[{"x":0,"y":0,"color":1,"text":"132"}]}
-2022-11-03 11:09:09,866 INFO Main [MQTT Call: DoorMonitorGRZ] Принят топик - Parking/MonitorDoor/Monitor/View/
-2022-11-03 11:09:09,869 INFO m.Settings [MQTT Call: DoorMonitorGRZ] Получение информации о хосте монитора. IP: 192.168.8.110 PORT: 1985
-2022-11-03 11:09:09,870 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Подключение к клиенту. HOST: 192.168.8.110:1985
-2022-11-03 11:09:09,870 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Попытка отправки сообщения. MESSAGE: [3, 68, 71] ADDRESS: /192.168.8.110 PORT: 1985
-2022-11-03 11:09:09,871 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Сообщение успешно отправлено.
-2022-11-03 11:09:09,871 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Отправка сообщения на табло. MESSAGE: 132 X: 0 Y: 0 COLOR: 1
-2022-11-03 11:09:09,871 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Сообщение успешно отправлено.
-2022-11-03 11:09:09,871 INFO m.EchoClient [MQTT Call: DoorMonitorGRZ] Сокет закрыт. IP: 192.168.8.110 PORT: 1985
-2022-11-03 11:09:20,473 INFO Main [MQTT Call: DoorMonitorGRZ] Получено сообщение. TOPIC: Parking/MonitorDoor/Door/Open/2/ MESSAGE: {"cameraNumber":1}
-2022-11-03 11:09:26,096 INFO Main [MQTT Call: DoorMonitorGRZ] Получено сообщение. TOPIC: Parking/MonitorDoor/Door/Warning/ MESSAGE: {"cameraNumber":1}
-2022-11-03 11:09:26,096 INFO Main [MQTT Call: DoorMonitorGRZ] Принят топик - Parking/MonitorDoor/Door/Warning/
-2022-11-03 12:12:24,229 INFO Main [main] Запуск программы.
-2022-11-03 12:12:24,304 INFO s.JsonService [main] Р¤Р°Р№Р» MonitorDoorConfig.json СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ РїРѕ РїСѓС‚Рё: C:\Users\Sergey\Desktop\JAVA\MonitorDoorGRZ\MonitorDoorConfig.json
-2022-11-03 12:12:24,352 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 18] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 12:12:24,353 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 18] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 12:12:24,355 ERROR s.JsonService [main] РћС€РёР±РєР°: Unrecognized field "clientId" (class models.ConfigurationModelDoorAndMonitor), not marked as ignorable (7 known properties: "ipClient", "ipMonitor", "ipDoor", "idClient", "portMonitor", "portClient", "portDoor"])
- at [Source: (File); line: 6, column: 18] (through reference chain: models.ConfigurationModelDoorAndMonitor["clientId"])
-2022-11-03 12:12:24,356 INFO s.MqttService [main] Попытка подключения. HOST: null PORT: 0 CLIENT_NAME: null
-2022-11-03 12:12:24,372 ERROR Main [main] Ошибка: Null clientId
+2022-11-08 11:41:25,848 INFO Main [main] Запуск программы.
+2022-11-08 11:41:25,934 INFO s.JsonService [main] Р¤Р°Р№Р» MonitorDoorConfig.json СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ РїРѕ РїСѓС‚Рё: C:\Users\Smoler\Desktop\MonitorDoorGRZ\MonitorDoorConfig.json
+2022-11-08 11:41:25,967 INFO s.JsonService [main] Р¤Р°Р№Р» РєРѕРЅС„РёРіСѓСЂР°С†РёРё СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ. Р—Р°РїСѓСЃС‚РёС‚Рµ РїСЂРѕРіСЂР°РјРјСѓ Р·Р°РЅРѕРІРѕ.  РџРЈРўР¬: C:\Users\Smoler\Desktop\MonitorDoorGRZ\MonitorDoorConfig.json
+2022-11-08 11:43:15,128 INFO Main [main] Запуск программы.
+2022-11-08 11:43:15,214 INFO s.JsonService [main] Р¤Р°Р№Р» MonitorDoorConfig.json СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ РїРѕ РїСѓС‚Рё: C:\Users\Smoler\Desktop\MonitorDoorGRZ\MonitorDoorConfig.json
+2022-11-08 11:43:15,255 INFO s.JsonService [main] Р¤Р°Р№Р» РєРѕРЅС„РёРіСѓСЂР°С†РёРё СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ. Р—Р°РїСѓСЃС‚РёС‚Рµ РїСЂРѕРіСЂР°РјРјСѓ Р·Р°РЅРѕРІРѕ.  РџРЈРўР¬: C:\Users\Smoler\Desktop\MonitorDoorGRZ\MonitorDoorConfig.json
+2022-11-08 11:44:56,507 INFO Main [main] Запуск программы.
+2022-11-08 11:44:56,650 INFO s.MqttService [main] Попытка подключения. HOST: 194.87.237.67 PORT: 1883 CLIENT_NAME: MonitorDoor
+2022-11-08 11:44:57,117 INFO s.MqttService [main] Успешное подключение.
+2022-11-08 11:44:57,117 INFO Main [main] Попытка подписки на топик Parking/MonitorDoor/#
+2022-11-08 11:44:57,149 INFO Main [main] Подписка произошла успешно.
+2022-11-08 11:45:40,493 INFO Main [main] Запуск программы.
+2022-11-08 11:45:40,617 INFO s.MqttService [main] Попытка подключения. HOST: 194.87.237.67 PORT: 1883 CLIENT_NAME: MonitorDoor
+2022-11-08 11:45:41,080 INFO s.MqttService [main] Успешное подключение.
+2022-11-08 11:45:41,080 INFO Main [main] Попытка подписки на топик Parking/MonitorDoor/#
+2022-11-08 11:45:41,146 INFO Main [main] Подписка произошла успешно.
+2022-11-08 11:45:51,078 INFO Main [main] Запуск программы.
+2022-11-08 11:45:51,149 INFO s.JsonService [main] Файл MonitorDoorConfig.json успешно создан по пути: C:\Users\Smoler\Desktop\MonitorDoorGRZ\MonitorDoorConfig.json
+2022-11-08 11:45:51,185 INFO s.JsonService [main] Файл конфигурации успешно создан. Запустите программу заново.  ПУТЬ: C:\Users\Smoler\Desktop\MonitorDoorGRZ\MonitorDoorConfig.json
