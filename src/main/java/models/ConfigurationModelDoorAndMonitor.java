@@ -2,14 +2,13 @@ package models;
 
 import lombok.Data;
 
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 @Data
 public class ConfigurationModelDoorAndMonitor {
-
+    String mqttUsername = "admin";
+    String mqttPassword = "333";
     String idClient = "MonitorDoor";
     String ipClient = "194.87.237.67";
     int portClient = 1883;

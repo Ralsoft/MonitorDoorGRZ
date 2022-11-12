@@ -16,8 +16,8 @@ public class JsonService {
     public void isNewFile(File file) {
         try {
             if (file.createNewFile()) {
-
                 FileOutputStream out = new FileOutputStream(file);
+
                 ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
                 String json = ow.writeValueAsString(new ConfigurationModelDoorAndMonitor());
 

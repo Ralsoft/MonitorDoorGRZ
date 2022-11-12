@@ -1,6 +1,5 @@
 package models;
 
-import com.sun.tools.javac.Main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,6 +22,7 @@ public class EchoClient {
             _port = host.port;
             LOG.info("Подключение к клиенту. HOST: " + _ip + ":" + _port);
             socket = new DatagramSocket();
+            socket.setSoTimeout(3000);
             address = InetAddress.getByName(_ip);
         } catch (Exception ex) {
             LOG.error("Ошибка: " + ex.getMessage());
@@ -34,7 +34,8 @@ public class EchoClient {
             LOG.info("Попытка отправки сообщения. MESSAGE: " + Arrays.toString(msg) + " ADDRESS: " + address + " PORT: " + _port);
             DatagramPacket packet = new DatagramPacket(msg, msg.length, address, _port);
             socket.send(packet);
-            LOG.info("Сообщение успешно отправлено.");
+            LOG.info("Сообщение успешно отправлено. Сообщение: " + Arrays.toString(packet.getData()));
+            Thread.sleep(50);
         } catch (Exception e) {
             LOG.error("Ошибка: " + e);
         }
@@ -53,6 +54,7 @@ public class EchoClient {
         try {
             LOG.info("Отправка сообщения на табло. MESSAGE: " + message + " X: " + x + " Y: " + y + " COLOR: " + color);
 
+            byte[] textDate = message.getBytes(Charset.forName("windows-1251"));
             byte[] textByte = message.getBytes(Charset.forName("windows-1251"));
             byte[] msg = new byte[6 + textByte.length];
             msg[0] = (byte) msg.length;
@@ -67,11 +69,22 @@ public class EchoClient {
 
             byte bcc = BCCCalc(msg, msg.length);
             msg[5 + textByte.length] = bcc;
-            var packet = new DatagramPacket(msg, msg.length, address, _port);
+            var packet = new DatagramPacket(textDate, msg.length, address, _port);
+//            var packet = new DatagramPacket(msg, msg.length, address, _port);
 
             socket.send(packet);
+            Thread.sleep(50);
+            LOG.info("Сообщение успешно отправлено. Сообщение: " + Arrays.toString(packet.getData()));
 
-            LOG.info("Сообщение успешно отправлено.");
+            byte[] receive = new byte[10];
+            DatagramPacket receives = new DatagramPacket(receive, receive.length);
+            socket.receive(receives);
+            String resultReceive = Arrays.toString(receives.getData());
+            LOG.info("Получен ответ от контроллера." +
+                    " Сообщение: " + resultReceive +
+                    " ADDRESS: " + address +
+                    " PORT: " + _port);
+
         } catch (Exception e) {
             LOG.error("Ошибка: " + e.getMessage());
         }

@@ -1,4 +1,6 @@
 {
+  "mqttUsername" : "admin",
+  "mqttPassword" : "333",
   "idClient" : "MonitorDoor",
   "ipClient" : "194.87.237.67",
   "portClient" : 1883,
