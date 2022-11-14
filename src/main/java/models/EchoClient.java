@@ -54,7 +54,6 @@ public class EchoClient {
         try {
             LOG.info("Отправка сообщения на табло. MESSAGE: " + message + " X: " + x + " Y: " + y + " COLOR: " + color);
 
-            byte[] textDate = message.getBytes(Charset.forName("windows-1251"));
             byte[] textByte = message.getBytes(Charset.forName("windows-1251"));
             byte[] msg = new byte[6 + textByte.length];
             msg[0] = (byte) msg.length;
@@ -69,8 +68,7 @@ public class EchoClient {
 
             byte bcc = BCCCalc(msg, msg.length);
             msg[5 + textByte.length] = bcc;
-            var packet = new DatagramPacket(textDate, msg.length, address, _port);
-//            var packet = new DatagramPacket(msg, msg.length, address, _port);
+            var packet = new DatagramPacket(msg, msg.length, address, _port);
 
             socket.send(packet);
             Thread.sleep(50);

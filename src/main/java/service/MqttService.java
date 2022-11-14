@@ -19,7 +19,7 @@ public class MqttService {
             LOG.info("Попытка подключения. HOST: " + host + " PORT: " + port + " CLIENT_NAME: " + clientName);
             mqttClient = new MqttClient(
                     "tcp://" + host
-                            + ":" + port, clientName);
+                            + ":" + port, MqttClient.generateClientId());
             options = new MqttConnectOptions();
             options.setExecutorServiceTimeout(5000);
             options.setMaxReconnectDelay(5000);
