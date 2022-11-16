@@ -11,12 +11,12 @@ public class Settings {
 
     public static Host getHostDoor(int cameraNumber) {
         try{
-            var ipDoor = jsonService.getConfigParam().monitorDoorDictionary.get(cameraNumber).ipDoor;
-            var portDoor = jsonService.getConfigParam().monitorDoorDictionary.get(cameraNumber).portDoor;
-            LOG.info("Получение информации о хосте двери. IP: " + ipDoor + " PORT: " + portDoor);
-            return new Host(ipDoor, portDoor);
+                var ipDoor = jsonService.getConfigParam().monitorDoorDictionary.get(cameraNumber).ipDoor;
+                var portDoor = jsonService.getConfigParam().monitorDoorDictionary.get(cameraNumber).portDoor;
+                LOG.info("Получение информации о хосте двери. IP: " + ipDoor + " PORT: " + portDoor);
+                return new Host(ipDoor, portDoor);
         }catch (Exception e){
-
+            LOG.error("Ошибка: " + e);
         }
         return null;
     }
@@ -28,7 +28,7 @@ public class Settings {
             LOG.info("Получение информации о хосте монитора. IP: " + ipMonitor + " PORT: " + portMonitor);
             return new Host(ipMonitor, portMonitor);
         }catch (Exception e){
-
+            LOG.error("Ошибка: " + e);
         }
         return null;
     }

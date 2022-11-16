@@ -17,4 +17,6 @@ public class ConfigurationModelDoorAndMonitor {
         put(1, new MonitorDoor("1244", 1234, "192.168.8.110", 1985));
         put(2, new MonitorDoor("1244", 1234, "192.168.8.111", 1245));
     }};
+
+
 }

@@ -5,6 +5,10 @@ import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -26,6 +30,7 @@ public class Monitor {
             var echoClient = new EchoClient(Settings.getHostMonitor(camNumber));
             //clear
             echoClient.sendEchoWithOutReceive(new byte[]{0x03, 0x44, 0x47});
+
             for (var item : messages) {
                 echoClient.sendEchoWithoutReceive(item.text, item.x, item.y, item.color);
             }
@@ -34,5 +39,7 @@ public class Monitor {
             LOG.error("Ошибка: " + ex.getMessage());
         }
     }
+
+
 
 }

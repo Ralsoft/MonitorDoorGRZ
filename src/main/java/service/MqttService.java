@@ -9,6 +9,8 @@ import org.eclipse.paho.client.mqttv3.*;
 
 import javax.sound.sampled.AudioFormat;
 import java.beans.Encoder;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class MqttService {
     private static final Logger LOG = LogManager.getLogger(MqttService.class);
@@ -21,10 +23,10 @@ public class MqttService {
 
     public void connectedMqtt(String host, int port, String clientName) throws InterruptedException {
         try {
-            LOG.info("Попытка подключения. HOST: " + host + " PORT: " + port + " CLIENT_NAME: " + clientName);
+            LOG.info("Попытка подключения. HOST: " + host + " PORT: " + port + " CLIENT_NAME: " + InetAddress.getLocalHost() + "-Monitor");
             mqttClient = new MqttClient(
                     "tcp://" + host
-                            + ":" + port, MqttClient.generateClientId());
+                            + ":" + port, InetAddress.getLocalHost() + "-Monitor");
             options = new MqttConnectOptions();
             options.setAutomaticReconnect(true);
             options.setUserName(jsonService.getConfigParam().getMqttUsername());
@@ -64,6 +66,8 @@ public class MqttService {
                 Thread.sleep(5000);
                 connectedMqtt(host, port, clientName);
             }
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
         }
     }
 
