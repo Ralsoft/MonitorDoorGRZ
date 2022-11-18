@@ -7,13 +7,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.paho.client.mqttv3.*;
 
-import javax.sound.sampled.AudioFormat;
-import java.beans.Encoder;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 public class MqttService {
-    private static final Logger LOG = LogManager.getLogger(MqttService.class);
+    private static final Logger log = LogManager.getLogger(MqttService.class);
 
     private MqttClient mqttClient;
     JsonService jsonService = new JsonService();
@@ -21,96 +18,95 @@ public class MqttService {
 
     static ObjectMapper mapper = new ObjectMapper();
 
-    public void connectedMqtt(String host, int port, String clientName) throws InterruptedException {
-        try {
-            LOG.info("Попытка подключения. HOST: " + host + " PORT: " + port + " CLIENT_NAME: " + InetAddress.getLocalHost() + "-Monitor");
-            mqttClient = new MqttClient(
-                    "tcp://" + host
-                            + ":" + port, InetAddress.getLocalHost() + "-Monitor");
+    public void connectedMqtt(String host, int port) throws InterruptedException {
+        try(MqttClient mqttClient = new MqttClient(
+                "tcp://" + host + ":" + port,
+                InetAddress.getLocalHost() + "-Monitor")) {
+            log.info(
+                    "Создание подключения клиента... HOST_NAME = " + jsonService.getConfigParam().getIpClient() +
+                            ", PORT = " + jsonService.getConfigParam().getPortClient() +
+                            ", USERNAME = " + jsonService.getConfigParam().getMqttUsername() +
+                            ", PASSWORD = " + jsonService.getConfigParam().getMqttPassword()
+            );
+
+
             options = new MqttConnectOptions();
             options.setAutomaticReconnect(true);
+            options.setConnectionTimeout(5000);
             options.setUserName(jsonService.getConfigParam().getMqttUsername());
             options.setPassword(jsonService.getConfigParam().getMqttPassword().toCharArray());
-
+            log.info(
+                    "Выставленные настройки MQTT: " +
+                            "Автоматический реконнект = " + options.isAutomaticReconnect()
+            );
 
             mqttClient.setCallback(new MqttCallback() {
                 @Override
                 public void connectionLost(Throwable throwable) {
-                    LOG.error("Соединение потеряно " + throwable.getMessage());
-                    if (!mqttClient.isConnected()) {
-                        try {
-                            Thread.sleep(5000);
-                            connectedMqtt(host, port, clientName);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
+                    log.warn("Соединение с MQTT потеряно!");
+                    try {
+                        subscribe();
+                    } catch (MqttException e) {
+                        throw new RuntimeException(e);
                     }
                 }
 
                 @Override
-                public void messageArrived(String s, MqttMessage mqttMessage) throws Exception {
-                    LOG.info("пришло сообщение " + s);
+                public void messageArrived(String s, MqttMessage mqttMessage) {
+                    log.info("Получено сообщение: " + s);
                 }
 
                 @Override
                 public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
-                    LOG.info("deliveryComplete " + iMqttDeliveryToken.toString());
                 }
             });
             mqttClient.connect(options);
-            subscribe();
-            LOG.info("Успешное подключение.");
-        } catch (MqttException e) {
-            LOG.error("Ошибка: " + e);
-            if (!mqttClient.isConnected()) {
-                Thread.sleep(5000);
-                connectedMqtt(host, port, clientName);
-            }
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
+            log.info("Успешное подключение.");
+        } catch (Exception e) {
+            log.error("Ошибка: " + e);
         }
     }
 
     private void subscribe() throws MqttException {
-        LOG.info("Попытка подписки на топик Parking/MonitorDoor/#");
+        log.info("Выполнение подписки на топик... ТОПИК: Parking/MonitorDoor/#");
         mqttClient.subscribe("Parking/MonitorDoor/#", (topic, message) -> {
             try {
-                LOG.info("Получено сообщение. TOPIC: " + topic + " MESSAGE: " + message);
+                log.info("Получено сообщение! ТОПИК: " + topic + " СООБЩЕНИЕ: " + message);
                 String json = new String(message.getPayload());
                 switch (topic) {
                     case "Parking/MonitorDoor/Monitor/View" -> {
                         try {
-                            LOG.info("Принят топик - Parking/MonitorDoor/Monitor/View");
+                            log.info("Принят топик - Parking/MonitorDoor/Monitor/View");
                             var monitor = mapper.readValue(json, Monitor.class);
                             monitor.sendMessages();
                             Thread.sleep(50);
                         } catch (Exception ex) {
-                            LOG.error("Ошибка: " + ex);
+                            log.error("Ошибка: " + ex);
                         }
                     }
                     case "Parking/MonitorDoor/Door/Open" -> {
                         try {
-                            LOG.info("Принят топик - Parking/MonitorDoor/Door/Open");
+                            log.info("Принят топик - Parking/MonitorDoor/Door/Open");
                             var door = mapper.readValue(json, Door.class);
                             door.openDoor0();
                         } catch (Exception ex) {
-                            LOG.error("Ошибка: " + ex);
+                            log.error("Ошибка: " + ex);
                         }
                     }
                     case "Parking/MonitorDoor/Door/Warning/" -> {
                         try {
-                            LOG.info("Принят топик - Parking/MonitorDoor/Door/Warning/");
+                            log.info("Принят топик - Parking/MonitorDoor/Door/Warning/");
                             //
                         } catch (Exception ex) {
-                            LOG.error("Ошибка: " + ex);
+                            log.error("Ошибка: " + ex);
                         }
                     }
                 }
             } catch (Exception ex) {
-                LOG.error("Ошибка: " + ex);
+                log.error("Ошибка: " + ex);
             }
         });
-        LOG.info("Подписка произошла успешно.");
+        log.info("Подписка на топик Parking/MonitorDoor/# произошла успешно.");
     }
     public MqttClient getMqttClient() {
         return mqttClient;

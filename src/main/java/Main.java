@@ -15,8 +15,8 @@ public class Main {
         try {
             mqttService.connectedMqtt(
                     service.getConfigParam().getIpClient(),
-                    service.getConfigParam().getPortClient(),
-                    service.getConfigParam().getIdClient());
+                    service.getConfigParam().getPortClient()
+            );
             startBackgroundMethods();
         } catch (Exception ex) {
             LOG.error("Ошибка: " + ex);

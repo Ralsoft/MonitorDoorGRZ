@@ -66,14 +66,6 @@ public class EchoClient {
                 msg[i + 5] = textByte[i];
             }
 
-            byte bcc = BCCCalc(msg, msg.length);
-            msg[5 + textByte.length] = bcc;
-            var packet = new DatagramPacket(msg, msg.length, address, _port);
-
-            socket.send(packet);
-            Thread.sleep(50);
-            LOG.info("Сообщение успешно отправлено. Сообщение: " + Arrays.toString(packet.getData()));
-
             byte[] receive = new byte[10];
             DatagramPacket receives = new DatagramPacket(receive, receive.length);
             socket.receive(receives);
@@ -82,6 +74,13 @@ public class EchoClient {
                     " Сообщение: " + resultReceive +
                     " ADDRESS: " + address +
                     " PORT: " + _port);
+
+            byte bcc = BCCCalc(msg, msg.length);
+            msg[5 + textByte.length] = bcc;
+            var packet = new DatagramPacket(msg, msg.length, address, _port);
+            socket.send(packet);
+            Thread.sleep(50);
+            LOG.info("Сообщение успешно отправлено. Сообщение: " + Arrays.toString(packet.getData()));
 
         } catch (Exception e) {
             LOG.error("Ошибка: " + e.getMessage());
