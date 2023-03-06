@@ -4,18 +4,21 @@
   "idClient" : "MonitorDoor",
   "ipClient" : "194.87.237.67",
   "portClient" : 1883,
-  "monitorDoorDictionary" : {
-    "1" : {
-      "ipDoor" : "1244",
-      "portDoor" : 1234,
-      "ipMonitor" : "192.168.8.110",
-      "portMonitor" : 1985
-    },
-    "2" : {
-      "ipDoor" : "1244",
-      "portDoor" : 1234,
-      "ipMonitor" : "192.168.8.111",
-      "portMonitor" : 1245
-    }
-  }
+  "databaseLogin" : "SYSDBA",
+  "databasePassword" : "temp",
+  "databasePath" : "C:\\\\Program Files (x86)\\\\CardSoft\\\\DuoSE\\\\Access\\\\ShieldPro_rest.gdb",
+  "databaseIp" : "26.98.93.81",
+  "adMessages" : [ {
+    "x" : 0,
+    "y" : 0,
+    "color" : 2,
+    "text" : "Ворота 1"
+  }, {
+    "x" : 8,
+    "y" : 0,
+    "color" : 2,
+    "text" : "Шмитовский проезд 39"
+  } ],
+  "databasePort" : 3050,
+  "intervalInSeconds" : 10
 }

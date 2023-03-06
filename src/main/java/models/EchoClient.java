@@ -7,6 +7,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class EchoClient {
@@ -75,6 +76,7 @@ public class EchoClient {
     public void sendEchoWithoutReceive(String message, byte x, byte y, byte color) {
         try {
             LOG.info("78 Отправка сообщения на табло. MESSAGE: " + message + " X: " + x + " Y: " + y + " COLOR: " + color);
+            //message = "ПРОБА";
 
             byte[] textByte = message.getBytes(Charset.forName("windows-1251"));
 
@@ -84,8 +86,9 @@ public class EchoClient {
             byte[] msg = new byte[6 + textByte.length];
             msg[0] = (byte) msg.length;
 
+
             if(textByte.length>9) {
-                msg[1] = 	0x4A;
+                msg[1] = 0x4A;
             } else {
                 msg[1] = 0x46;
             }
@@ -124,7 +127,9 @@ public class EchoClient {
     }
 
     public void close() {
+
         socket.close();
+
         LOG.info("Сокет закрыт. IP: " + _ip + " PORT: " + _port);
     }
 

@@ -3,16 +3,16 @@ package models;
 import lombok.Data;
 
 @Data
-public class Messages {
+public class Message {
     public byte x;
     public byte y;
     public byte color;
     public String text;
 
-    public Messages() {
+    public Message() {
     }
 
-    public Messages(byte x, byte y, byte color, String text) {
+    public Message(byte x, byte y, byte color, String text) {
         this.x = x;
         this.y = y;
         this.color = color;

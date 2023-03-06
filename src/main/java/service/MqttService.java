@@ -2,6 +2,7 @@ package service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Door;
+import models.Host;
 import models.Monitor;
 import models.Settings;
 import org.apache.logging.log4j.LogManager;
@@ -61,7 +62,13 @@ public class MqttService {
                             try {
                                 log.info("Принят топик - Parking/MonitorDoor/Monitor/View");
                                 Monitor monitor = mapper.readValue(json, Monitor.class); // Преобразуем JSON в java объект
-                                monitor.sendMessages();
+
+                                //clear
+                                //monitor.setHost(new Host("192.168.8.105", 1985));
+                                
+                                monitor.init(); //camNumber -> Host
+                                var monitorService = new MonitorService(monitor);
+                                monitorService.view();
 
                             } catch (Exception ex) {
                                 log.error("Ошибка: " + ex);

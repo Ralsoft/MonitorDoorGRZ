@@ -1,4 +1,5 @@
 import db.ParamRepository;
+import models.Monitor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.quartz.*;
@@ -13,6 +14,8 @@ public class Main {
     private static final Logger LOG = LogManager.getLogger(Main.class);
     static JsonService settings = new JsonService();
 
+    private String MessageAd = "Это реклама";
+
     public static void main(String[] args) {
 
         try {
@@ -21,11 +24,14 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-        ParamRepository paramRepository = new ParamRepository();
-        var i = paramRepository.getIpMonitor(2);
-
+        ViewAd();
         LOG.info("Запуск программы.");
 
+    }
+
+    public static void ViewAd(){
+        var monitor_0 = new Monitor("192.168.8.105", 1985);
+        monitor_0.viewAd(settings.getConfigParam().getAdMessages());
     }
 
     public static void someThinkTask() throws SchedulerException {
