@@ -35,6 +35,17 @@
             <artifactId>log4j-core</artifactId>
             <version>2.19.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.firebirdsql.jdbc</groupId>
+            <artifactId>jaybird</artifactId>
+            <version>4.0.7.java11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.0</version>
+        </dependency>
 
     </dependencies>
 

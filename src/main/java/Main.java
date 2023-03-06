@@ -1,5 +1,9 @@
+import db.ParamRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.quartz.*;
+import org.quartz.impl.StdSchedulerFactory;
+import quartz.TopicSender;
 import service.JsonService;
 import service.MqttService;
 
@@ -7,50 +11,43 @@ import service.MqttService;
 public class Main {
 
     private static final Logger LOG = LogManager.getLogger(Main.class);
-    static JsonService service = new JsonService();
+    static JsonService settings = new JsonService();
 
-    static MqttService mqttService = new MqttService();
     public static void main(String[] args) {
-        LOG.info("Запуск программы.");
+
         try {
-            mqttService.connectedMqtt(
-                    service.getConfigParam().getIpClient(),
-                    service.getConfigParam().getPortClient()
-            );
-            startBackgroundMethods();
-        } catch (Exception ex) {
-            LOG.error("Ошибка: " + ex);
+            someThinkTask();
+        } catch (SchedulerException e) {
+            throw new RuntimeException(e);
         }
+
+        ParamRepository paramRepository = new ParamRepository();
+        var i = paramRepository.getIpMonitor(2);
+
+        LOG.info("Запуск программы.");
+
     }
 
-    public static void startBackgroundMethods(){
-        new Thread(()->{ // проверка подключения к mqtt
-            while (true){
-                try {
-                    LOG.info("подключение к mqtt: " +(
-                            mqttService.getMqttClient().isConnected() ? "присутствует" : "отсутствует"));
-                    Thread.sleep(15000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }).start();
+    public static void someThinkTask() throws SchedulerException {
+        SchedulerFactory schedulerFactory = new StdSchedulerFactory();
+        Scheduler scheduler = schedulerFactory.getScheduler();
 
-/*
-        new Thread(()->{ // вывод времени на монитор
-            DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        scheduler.start();
 
-            while (true){
-                var messages = new ArrayList<Messages>();
-                messages.add( new Messages((byte) 9,(byte) 15,(byte) 1, dateFormat.format(new Date())));
-                var monitor = new Monitor(1, messages);
-                monitor.sendMessages();
-                try {
-                    Thread.sleep(60000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }).start();*/
+        JobDetail job = JobBuilder.newJob(TopicSender.class)
+                .withIdentity("topic_sender", "group1")
+                .usingJobData("key", "value")
+                .build();
+
+        Trigger trigger = TriggerBuilder.newTrigger()
+                .withIdentity("topic_trigger", "group1")
+                .startNow()
+                .withSchedule(SimpleScheduleBuilder.simpleSchedule()
+                        .withIntervalInSeconds(settings.getConfigParam().getIntervalInSeconds())
+                        .repeatForever())
+                .build();
+
+        scheduler.scheduleJob(job, trigger);
+
     }
 }

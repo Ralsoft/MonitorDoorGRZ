@@ -24,7 +24,7 @@ public class JsonService {
                 out.write(json.getBytes());
                 out.close();
 
-                LOG.info("Файл конфигурации успешно создан. Запустите программу заново.  ПУТЬ: " + file.getAbsolutePath());
+                LOG.info("Файл конфигурации успешно создан. Запустите программу заново. Путь до файла: " + file.getAbsolutePath());
                 System.exit(0);
             }
         } catch (IOException e) {

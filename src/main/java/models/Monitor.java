@@ -24,11 +24,12 @@ public class Monitor {
         try {
             var echoClient = new EchoClient(Settings.getHostMonitor(camNumber));
             //clear
-            echoClient.sendEchoWithOutReceive(new byte[]{0x03, 0x44, 0x47});
+            echoClient.sendEchoWithOutReceive(new byte[] {0x03, 0x44, 0x47});
 
             for (var item : messages) {
                 echoClient.sendEchoWithoutReceive(item.text, item.x, item.y, item.color);
             }
+
             echoClient.close();
         } catch (Exception ex) {
             LOG.error("Ошибка: " + ex.getMessage());

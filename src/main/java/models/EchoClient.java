@@ -10,6 +10,7 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 
 public class EchoClient {
+
     private static final Logger LOG = LogManager.getLogger(EchoClient.class);
     private DatagramSocket socket;
     private InetAddress address;
@@ -25,19 +26,40 @@ public class EchoClient {
             socket.setSoTimeout(3000);
             address = InetAddress.getByName(_ip);
         } catch (Exception ex) {
-            LOG.error("Ошибка: " + ex.getMessage());
+            LOG.error("EchoClient Ошибка: " + ex);
         }
     }
 
     public void sendEchoWithOutReceive(byte[] msg) {
         try {
             LOG.info("Попытка отправки сообщения. MESSAGE: " + Arrays.toString(msg) + " ADDRESS: " + address + " PORT: " + _port);
-            DatagramPacket packet = new DatagramPacket(msg, msg.length, address, _port);
-            socket.send(packet);
-            LOG.info("Сообщение успешно отправлено. Сообщение: " + Arrays.toString(packet.getData()));
-            Thread.sleep(50);
+
+            try{
+                LOG.info("Отправка пакета -> " + Arrays.toString(msg));
+                DatagramPacket packetSend = new DatagramPacket(msg, msg.length, address, _port);
+                socket.send(packetSend);
+            }catch (Exception ex){
+                LOG.error(ex.getMessage());
+            }
+
+            try {
+                byte[] receiveByte = new byte[10];
+                DatagramPacket packetReceive = new DatagramPacket(receiveByte, receiveByte.length, address, _port);
+                socket.receive(packetReceive);
+                LOG.info("Получен ответ. -> " + Arrays.toString(receiveByte));
+
+                if(receiveByte[3] == 0x00){
+                    LOG.info("OK");
+                } else {
+                    LOG.info("ERR. Получен код ошибки "+ receiveByte[3]);
+                }
+
+            }catch (Exception ex){
+                LOG.info("Ответ контроллера не получен.");
+            }
+
         } catch (Exception e) {
-            LOG.error("Ошибка: " + e);
+            LOG.error("sendEchoWithOutReceive Ошибка: " + e);
         }
     }
 
@@ -52,12 +74,22 @@ public class EchoClient {
 
     public void sendEchoWithoutReceive(String message, byte x, byte y, byte color) {
         try {
-            LOG.info("Отправка сообщения на табло. MESSAGE: " + message + " X: " + x + " Y: " + y + " COLOR: " + color);
+            LOG.info("78 Отправка сообщения на табло. MESSAGE: " + message + " X: " + x + " Y: " + y + " COLOR: " + color);
 
             byte[] textByte = message.getBytes(Charset.forName("windows-1251"));
+
+            LOG.info("82 " + Arrays.toString(textByte));
+            LOG.info("83 " + message);
+
             byte[] msg = new byte[6 + textByte.length];
             msg[0] = (byte) msg.length;
-            msg[1] = 0x46;
+
+            if(textByte.length>9) {
+                msg[1] = 	0x4A;
+            } else {
+                msg[1] = 0x46;
+            }
+
             msg[2] = x;
             msg[3] = y;
             msg[4] = color;
@@ -66,29 +98,42 @@ public class EchoClient {
                 msg[i + 5] = textByte[i];
             }
 
-            byte[] receive = new byte[10];
-            DatagramPacket receives = new DatagramPacket(receive, receive.length);
-            socket.receive(receives);
-            String resultReceive = Arrays.toString(receives.getData());
-            LOG.info("Получен ответ от контроллера." +
-                    " Сообщение: " + resultReceive +
-                    " ADDRESS: " + address +
-                    " PORT: " + _port);
+            try{
+                byte bcc = BCCCalc(msg, msg.length);
+                msg[5 + textByte.length] = bcc;
+                LOG.info("Отправка пакета -> " + Arrays.toString(msg));
+                var packet = new DatagramPacket(msg, msg.length, address, _port);
+                socket.send(packet);
 
-            byte bcc = BCCCalc(msg, msg.length);
-            msg[5 + textByte.length] = bcc;
-            var packet = new DatagramPacket(msg, msg.length, address, _port);
-            socket.send(packet);
-            Thread.sleep(50);
-            LOG.info("Сообщение успешно отправлено. Сообщение: " + Arrays.toString(packet.getData()));
+                byte[] receive = new byte[10];
+                DatagramPacket packetReceive = new DatagramPacket(receive, receive.length, address, _port);
+                socket.receive(packetReceive);
+                LOG.info("Получен ответ от контроллера." +
+                        " Сообщение: " + convertByteToHex(receive) +
+                        " ADDRESS: " + address +
+                        " PORT: " + _port);
 
+                Thread.sleep(50);
+                LOG.info("Сообщение успешно отправлено. Сообщение: " + message);
+            }catch (Exception ex){
+                LOG.error("Ошибка: " + ex.getMessage());
+            }
         } catch (Exception e) {
-            LOG.error("Ошибка: " + e.getMessage());
+            LOG.error("sendEchoWithoutReceive Ошибка: " + e.getMessage());
         }
     }
 
     public void close() {
         socket.close();
         LOG.info("Сокет закрыт. IP: " + _ip + " PORT: " + _port);
+    }
+
+    String convertByteToHex(byte[] text){
+
+        StringBuilder sb = new StringBuilder();
+        for (byte b : text) {
+            sb.append(String.format("%02X ", b));
+        }
+        return sb.toString();
     }
 }

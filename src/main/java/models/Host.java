@@ -1,8 +1,10 @@
 package models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class Host {
     String ip;
     int port;
