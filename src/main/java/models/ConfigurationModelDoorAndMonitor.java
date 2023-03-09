@@ -36,6 +36,7 @@ public class ConfigurationModelDoorAndMonitor {
 
     int databasePort = 3050;
     int intervalInSeconds = 10;
+    int intervalViewGRZInSeconds = 20;
 
     /*Map<Integer, MonitorDoor> monitorDoorDictionary = new HashMap<>() {{
         put(1, new MonitorDoor("1244", 1234, "192.168.8.110", 1985));

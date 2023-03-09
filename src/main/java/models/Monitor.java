@@ -133,20 +133,33 @@ public class Monitor {
     }
 
     public void viewAd(){
-        while (true)
-        {
-            if(!viewGRZ){
-                viewMessages(ad, true);
+        new ViewAdThread(this).start();
+    }
 
-                //maybe error
-                MonitorService.remove(this);
-                break;
-            }
+    class ViewAdThread extends Thread{
+        private Monitor monitor;
 
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        public ViewAdThread(Monitor monitor){
+            this.monitor = monitor;
+        }
+
+        @Override
+        public void run() {
+            while (true)
+            {
+                if(!viewGRZ){
+                    viewMessages(ad, true);
+
+                    //maybe error
+                    MonitorService.remove(monitor);
+                    break;
+                }
+
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -165,7 +178,7 @@ public class Monitor {
                 public void run() {
                     viewAd(ad);
                 }
-            }, 20 * 1000);
+            }, new JsonService().getConfigParam().intervalViewGRZInSeconds * 1000L);
         }
     }
 }
