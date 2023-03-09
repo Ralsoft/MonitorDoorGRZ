@@ -8,17 +8,30 @@
   "databasePassword" : "temp",
   "databasePath" : "C:\\\\Program Files (x86)\\\\CardSoft\\\\DuoSE\\\\Access\\\\ShieldPro_rest.gdb",
   "databaseIp" : "26.98.93.81",
-  "adMessages" : [ {
-    "x" : 0,
-    "y" : 0,
-    "color" : 2,
-    "text" : "������ 1"
-  }, {
-    "x" : 8,
-    "y" : 0,
-    "color" : 2,
-    "text" : "���������� ������ 39"
-  } ],
+  "adMessages" : {
+    "3" : [ {
+      "x" : 0,
+      "y" : 0,
+      "color" : 2,
+      "text" : "Ворота 399"
+    }, {
+      "x" : 8,
+      "y" : 0,
+      "color" : 2,
+      "text" : "Шмитовский проезд 39/3"
+    } ],
+    "4" : [ {
+      "x" : 0,
+      "y" : 0,
+      "color" : 2,
+      "text" : "Ворота 4"
+    }, {
+      "x" : 8,
+      "y" : 0,
+      "color" : 2,
+      "text" : "Шмитовский проезд 39/4"
+    } ]
+  },
   "databasePort" : 3050,
   "intervalInSeconds" : 10
 }

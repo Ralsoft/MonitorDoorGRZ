@@ -6,6 +6,7 @@ import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import quartz.TopicSender;
 import service.JsonService;
+import service.MonitorService;
 import service.MqttService;
 
 
@@ -24,14 +25,9 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-        ViewAd();
+        MonitorService.viewAllAd();
         LOG.info("Запуск программы.");
 
-    }
-
-    public static void ViewAd(){
-        var monitor_0 = new Monitor("192.168.8.105", 1985);
-        monitor_0.viewAd(settings.getConfigParam().getAdMessages());
     }
 
     public static void someThinkTask() throws SchedulerException {

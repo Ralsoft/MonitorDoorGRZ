@@ -1,16 +1,18 @@
 package service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import models.Door;
-import models.Host;
-import models.Monitor;
-import models.Settings;
+import models.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.paho.client.mqttv3.*;
 
 import java.net.InetAddress;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MqttService {
     private static final Logger log = LogManager.getLogger(MqttService.class);
@@ -58,6 +60,18 @@ public class MqttService {
                     log.info("Получено сообщение! ТОПИК: " + topic + " СООБЩЕНИЕ: " + message);
                     String json = new String(message.getPayload());
                     switch (topic) {
+                        case "Parking/MonitorDoor/Monitor/View/EditMainText" -> {
+                            try{
+                                log.info("Принят топик - Parking/MonitorDoor/Monitor/View/EditMainText");
+                                TypeReference<Map<Integer, ArrayList<Message>>> typeRef = new TypeReference<>() {};
+                                var messages = mapper.readValue(json, typeRef);
+                                jsonService.setMainText(messages);
+
+                                MonitorService.viewAllAd();
+                            }catch(Exception ex){
+                                log.error("Ошибка: " + ex);
+                            }
+                        }
                         case "Parking/MonitorDoor/Monitor/View" -> {
                             try {
                                 log.info("Принят топик - Parking/MonitorDoor/Monitor/View");
@@ -65,8 +79,9 @@ public class MqttService {
 
                                 //clear
                                 //monitor.setHost(new Host("192.168.8.105", 1985));
-                                
-                                monitor.init(); //camNumber -> Host
+                                //monitor.setAd(jsonService.getConfigParam().getAdMessages().get(3));
+
+                                monitor.init(); //camNumber -> Host/Ad
                                 var monitorService = new MonitorService(monitor);
                                 monitorService.view();
 

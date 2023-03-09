@@ -18,42 +18,52 @@ public class Monitor {
 
     public int camNumber;
     public List<Message> messages;
+    public List<Message> ad;
 
 
     @JsonIgnore
     private Host host;
     @JsonIgnore
     private Timer timer;
+    @JsonIgnore
+    private boolean viewGRZ;
+
+
 
     public Monitor(){
-
+        timer = new Timer();
     }
+
 
     public void init(){
         this.host = Settings.getHostMonitor(camNumber);
+        this.ad = new JsonService().getConfigParam().getAdMessages().get(camNumber);
     }
 
     public Monitor(String ip, int port) {
         this.host = new Host(ip, port);
         this.messages = new ArrayList<>();
+        this.ad = new ArrayList<>();
         timer = new Timer();
     }
 
-    public Monitor(String ip, int port, List<Message> messages) {
+    public Monitor(String ip, int port, List<Message> messages, List<Message> ad) {
         this.host = new Host(ip, port);
         this.messages = messages;
+        this.ad = ad;
         timer = new Timer();
     }
 
     public Monitor(int camNumber) {
         this.host = Settings.getHostMonitor(camNumber);
-        this.messages = new ArrayList<>();
+        this.ad = new JsonService().getConfigParam().getAdMessages().get(camNumber);
         timer = new Timer();
     }
 
     public Monitor(int camNumber, List<Message> messages) {
         this.host = Settings.getHostMonitor(camNumber);
         this.messages = messages;
+        this.ad = new JsonService().getConfigParam().getAdMessages().get(camNumber);
         timer = new Timer();
     }
 
@@ -116,23 +126,46 @@ public class Monitor {
         }
     }
 
-    public void viewAd(ArrayList<Message> ad){
+    public void viewAd(List<Message> ad){
         viewMessages(ad, true);
+        viewGRZ = false;
         MonitorService.remove(this);
+    }
+
+    public void viewAd(){
+        while (true)
+        {
+            if(!viewGRZ){
+                viewMessages(ad, true);
+
+                //maybe error
+                MonitorService.remove(this);
+                break;
+            }
+
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void view(){
 
         viewGRZ();
+        viewGRZ = true;
 
-        timer.cancel();
-        timer = new Timer();
+        if(timer != null){
+            timer.cancel();
+            timer = new Timer();
 
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                viewAd(new JsonService().getConfigParam().getAdMessages());
-            }
-        }, 20 * 1000);
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    viewAd(ad);
+                }
+            }, 20 * 1000);
+        }
     }
 }

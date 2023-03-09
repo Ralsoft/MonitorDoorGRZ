@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -26,9 +23,15 @@ public class ConfigurationModelDoorAndMonitor {
     //String databaseIp = "192.168.1.5";  //hedliner
     String databaseIp = "26.98.93.81";
 
-    ArrayList<Message> adMessages = new ArrayList<>(){{
-        add(new Message((byte) 0, (byte) 0, (byte) 2, "Ворота 1"));
-        add(new Message((byte) 8, (byte) 0, (byte) 2, "Шмитовский проезд 39"));
+    Map<Integer, ArrayList<Message>> adMessages = new HashMap<>(){{
+        put(1, new ArrayList<>(){{
+            add(new Message((byte) 0, (byte) 0, (byte) 2, "Ворота 1"));
+            add(new Message((byte) 8, (byte) 0, (byte) 2, "Шмитовский проезд 39/1"));
+        }});
+        put(3, new ArrayList<>(){{
+            add(new Message((byte) 0, (byte) 0, (byte) 2, "Ворота 2"));
+            add(new Message((byte) 8, (byte) 0, (byte) 2, "Шмитовский проезд 39/3"));
+        }});
     }};
 
     int databasePort = 3050;
